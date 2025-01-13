@@ -1,17 +1,18 @@
 # m4ze_m4r4th0n
 a maze game, that can be played by everyone, but can be won by intellectuals
-
-
-
-
+//
+//
+//
+//unlock
 # Features
 
 BOOSTS: Earn points by stepping on the light-blue colored blocks.
         
 DEDUCTIONS: Lose points when stepping on dark-red blocks.
             Points are deducted for every second spent solving the maze.
-            
-If you score '500+' points to unlock a surprise message.
+//
+//
+If you score '500+' points you'll unlock a special surprise on the end screen.
 
 
 
