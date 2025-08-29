@@ -16,6 +16,13 @@ PLAYER_COLOR = (255, 20, 0)
 END_POSITION_COLOR = (255, 215, 0)
 BACKGROUND_COLOR = (20, 20, 20) 
 
+# Player styling
+# How the player's square is rendered inside a cell
+PLAYER_OUTLINE_COLOR = (255, 255, 255)  # outline to make it pop
+PLAYER_OUTLINE_WIDTH = 2                # 0 for no outline
+PLAYER_INSET = 2                        # padding inside the cell (px)
+PLAYER_BORDER_RADIUS = 5                # rounded corners (0 keeps sharp corners)
+
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))  
 pygame.display.set_caption("m4ze m4r4th0n")  
@@ -176,8 +183,29 @@ while running:
             pygame.draw.rect(screen, color,   
                              (x * CELL_SIZE, y * CELL_SIZE + 40, CELL_SIZE, CELL_SIZE))  
 
-    pygame.draw.rect(screen, PLAYER_COLOR,   
-                     (player_pos[0] * CELL_SIZE, player_pos[1] * CELL_SIZE + 40, CELL_SIZE, CELL_SIZE))  
+    # Draw the player with inset, outline, and rounded corners
+    px = player_pos[0] * CELL_SIZE
+    py = player_pos[1] * CELL_SIZE + 40
+    player_rect = pygame.Rect(
+        px + PLAYER_INSET,
+        py + PLAYER_INSET,
+        CELL_SIZE - 2 * PLAYER_INSET,
+        CELL_SIZE - 2 * PLAYER_INSET,
+    )
+    if PLAYER_OUTLINE_WIDTH > 0:
+        pygame.draw.rect(
+            screen,
+            PLAYER_OUTLINE_COLOR,
+            player_rect,
+            width=PLAYER_OUTLINE_WIDTH,
+            border_radius=PLAYER_BORDER_RADIUS,
+        )
+    pygame.draw.rect(
+        screen,
+        PLAYER_COLOR,
+        player_rect,
+        border_radius=PLAYER_BORDER_RADIUS,
+    )
 
     pygame.draw.rect(screen, END_POSITION_COLOR,   
                      (end_pos[0] * CELL_SIZE, end_pos[1] * CELL_SIZE + 40, CELL_SIZE, CELL_SIZE))  
